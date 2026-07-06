@@ -1,6 +1,151 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Code, PenTool, BrainCircuit, Rocket, Calendar, MapPin } from "lucide-react";
+import { useState } from "react";
+import { useSubmitContact } from "@workspace/api-client-react";
+
+const PROJECT_TYPES = [
+  "Brand platform",
+  "Technical rebuild",
+  "New product",
+  "Strategic coaching",
+  "Other",
+];
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", projectType: "", message: "" });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const mutation = useSubmitContact();
+
+  function validate() {
+    const e: Record<string, string> = {};
+    if (!form.name.trim()) e.name = "Name is required";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
+    if (!form.message.trim()) e.message = "Message is required";
+    return e;
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => { const n = { ...prev }; delete n[name]; return n; });
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const v = validate();
+    if (Object.keys(v).length > 0) { setErrors(v); return; }
+    mutation.mutate(
+      { data: { name: form.name.trim(), email: form.email.trim(), projectType: form.projectType || undefined, message: form.message.trim() } },
+      { onSuccess: () => setSubmitted(true) }
+    );
+  }
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center py-16"
+      >
+        <div className="text-5xl mb-6">✓</div>
+        <h3 className="text-3xl font-display font-bold mb-4">Message sent!</h3>
+        <p className="text-xl opacity-80 font-light">We'll be in touch soon.</p>
+      </motion.div>
+    );
+  }
+
+  const inputClass = "w-full bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/40 px-4 py-3 focus:outline-none focus:border-primary-foreground transition-colors";
+  const labelClass = "block text-sm font-bold uppercase tracking-wider mb-2 opacity-80";
+  const errorClass = "mt-1 text-sm text-red-300";
+
+  return (
+    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className={labelClass}>Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            placeholder="Your name"
+            value={form.name}
+            onChange={handleChange}
+            className={inputClass}
+          />
+          {errors.name && <p className={errorClass}>{errors.name}</p>}
+        </div>
+        <div>
+          <label htmlFor="email" className={labelClass}>Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={handleChange}
+            className={inputClass}
+          />
+          {errors.email && <p className={errorClass}>{errors.email}</p>}
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="projectType" className={labelClass}>Project type <span className="normal-case font-normal opacity-60">(optional)</span></label>
+        <select
+          id="projectType"
+          name="projectType"
+          value={form.projectType}
+          onChange={handleChange}
+          className={inputClass}
+        >
+          <option value="">Select a project type…</option>
+          {PROJECT_TYPES.map((t) => (
+            <option key={t} value={t}>{t}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="message" className={labelClass}>Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          placeholder="Tell us about your project…"
+          value={form.message}
+          onChange={handleChange}
+          className={inputClass + " resize-none"}
+        />
+        {errors.message && <p className={errorClass}>{errors.message}</p>}
+      </div>
+
+      {mutation.isError && (
+        <p className="text-red-300 text-sm">
+          {(mutation.error as Error)?.message ?? "Something went wrong. Please try again."}
+        </p>
+      )}
+
+      <button
+        type="submit"
+        disabled={mutation.isPending}
+        className="w-full inline-flex items-center justify-center gap-3 px-10 py-5 bg-background text-foreground font-bold text-lg uppercase tracking-wider hover:bg-background/90 hover:scale-[1.02] transition-all shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+      >
+        {mutation.isPending ? "Sending…" : (
+          <>
+            Send message
+            <ArrowRight className="w-5 h-5 text-primary" />
+          </>
+        )}
+      </button>
+    </form>
+  );
+}
 
 export function Home() {
   const containerVariants = {
@@ -311,16 +456,16 @@ export function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-10">
           <h2 className="text-[15vw] font-display font-black leading-none whitespace-nowrap">LET'S BUILD</h2>
         </div>
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Ready to move fast?</h2>
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto font-light">
-            Whether you need a new brand platform, a technical rebuild, or strategic coaching—we're ready.
-          </p>
-          <a href="mailto:hello@moaiohio.com" className="inline-flex items-center gap-3 px-10 py-5 bg-background text-foreground font-bold text-xl uppercase tracking-wider hover:bg-background/90 hover:scale-105 transition-all shadow-2xl">
-            hello@moaiohio.com
-            <ArrowRight className="w-6 h-6 text-primary" />
-          </a>
+
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Ready to move fast?</h2>
+            <p className="text-xl md:text-2xl opacity-90 font-light">
+              Whether you need a new brand platform, a technical rebuild, or strategic coaching—we're ready.
+            </p>
+          </div>
+
+          <ContactForm />
         </div>
       </section>
     </div>
