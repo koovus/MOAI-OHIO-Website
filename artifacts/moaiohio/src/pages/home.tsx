@@ -1,0 +1,328 @@
+import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight, Code, PenTool, BrainCircuit, Rocket, Calendar, MapPin } from "lucide-react";
+
+export function Home() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100 }
+    }
+  };
+
+  return (
+    <div className="w-full">
+      {/* HERO SECTION */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-border">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-background mix-blend-multiply z-10" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] mix-blend-screen" />
+          
+          {/* Subtle noise/grid overlay */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-20 pointer-events-none" />
+        </div>
+        
+        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 flex flex-col items-center text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="inline-block py-1 px-3 mb-6 border border-primary/30 bg-primary/10 text-primary uppercase tracking-widest text-xs font-bold rounded-none">
+              Future Forward Web Studio
+            </span>
+          </motion.div>
+          
+          <motion.h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter leading-[1.1] mb-8 max-w-5xl"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Craft Meets Code. <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Creativity is the Product.</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mb-12 font-light"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            We build for founders who think in systems and move fast. Electric, confident, and relentlessly focused on shipping things that work.
+          </motion.p>
+          
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <a href="#contact" className="px-8 py-4 bg-primary text-primary-foreground font-bold text-lg uppercase tracking-wider hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group data-[testid='hero-cta']">
+              Start a Project
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#portfolio" className="px-8 py-4 bg-transparent border border-border text-foreground font-bold text-lg uppercase tracking-wider hover:bg-secondary transition-all flex items-center justify-center">
+              View Our Work
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section id="services" className="py-32 border-b border-border bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-20 md:w-2/3">
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Our Services</h2>
+            <p className="text-xl text-muted-foreground font-light">We combine human intuition with AI leverage to build digital experiences that punch above their weight class.</p>
+          </div>
+
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {/* Service 1 */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+              <PenTool className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-display font-bold mb-4">Web Design</h3>
+              <p className="text-muted-foreground leading-relaxed">Beautiful, functional interfaces built for real users. We focus on striking visual direction combined with uncompromising usability.</p>
+            </motion.div>
+
+            {/* Service 2 */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+              <Code className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-display font-bold mb-4">Web Development</h3>
+              <p className="text-muted-foreground leading-relaxed">Clean, performant code that ships and scales. We build resilient technical architectures that grow with your ambitions.</p>
+            </motion.div>
+
+            {/* Service 3 */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+              <BrainCircuit className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-display font-bold mb-4">Vibe Coding / AI & Creative</h3>
+              <p className="text-muted-foreground leading-relaxed">AI-assisted development and creative workflows for the modern builder. Shipping at the speed of thought without losing the soul.</p>
+            </motion.div>
+
+            {/* Service 4 */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+              <Rocket className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-display font-bold mb-4">Business Development Coaching</h3>
+              <p className="text-muted-foreground leading-relaxed">Strategic guidance to help founders grow intentionally. Connecting technical decisions to revenue outcomes.</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PORTFOLIO SECTION */}
+      <section id="portfolio" className="py-32 border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="md:w-2/3">
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Selected Work</h2>
+              <p className="text-xl text-muted-foreground font-light">Artifacts of our obsession with craft.</p>
+            </div>
+            <a href="#" className="flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary/80 transition-colors">
+              View Archive <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { title: "Nexus Fintech", category: "Web Design / Dev", desc: "A high-performance trading dashboard built for retail investors." },
+              { title: "Aura Skincare", category: "E-commerce", desc: "Headless Shopify storefront with custom WebGL experiences." },
+              { title: "Vertex AI", category: "AI & Creative", desc: "Interactive documentation and playground for a new LLM platform." },
+              { title: "Lumina Workspace", category: "SaaS Application", desc: "Collaborative canvas editor with real-time multiplayer." }
+            ].map((project, i) => (
+              <motion.div 
+                key={i}
+                className="group relative cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="aspect-[4/3] bg-secondary overflow-hidden mb-6 relative">
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                  <div className="w-full h-full bg-gradient-to-br from-card to-background flex items-center justify-center p-12">
+                    <div className="w-full h-full border border-border/50 bg-background/50 backdrop-blur-sm shadow-2xl transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                </div>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="text-primary text-sm font-bold uppercase tracking-widest mb-2 block">{project.category}</span>
+                    <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                    <p className="text-muted-foreground">{project.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section className="py-32 border-b border-border bg-primary/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-20 text-center">What Founders Say</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { quote: "moaiohio transformed our online presence. They move faster than any agency I've worked with, and the quality is relentless.", name: "Sarah J.", role: "CEO, TechFlow" },
+              { quote: "They don't just write code; they understand the business physics behind what they're building. True partners.", name: "David M.", role: "Founder, ScaleUp" },
+              { quote: "Their vibe coding approach meant we went from napkin sketch to a production-ready MVP in under a month.", name: "Elena R.", role: "CTO, Venture AI" }
+            ].map((t, i) => (
+              <motion.div 
+                key={i} 
+                className="bg-card border border-border p-8 relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="text-primary text-6xl font-display leading-none absolute top-4 left-4 opacity-20">"</div>
+                <p className="text-lg mb-8 relative z-10 font-light mt-4">"{t.quote}"</p>
+                <div>
+                  <p className="font-bold text-foreground">{t.name}</p>
+                  <p className="text-muted-foreground text-sm">{t.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EVENTS SECTION */}
+      <section className="py-32 border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-20">
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Upcoming Events</h2>
+            <p className="text-xl text-muted-foreground font-light">Workshops and sessions for the builder community.</p>
+          </div>
+
+          <div className="flex flex-col">
+            {[
+              { title: "Vibe Coding 101: AI Workflows for Frontend", date: "Oct 12, 2025", type: "Online", desc: "Learn how to integrate AI tools directly into your creative development process." },
+              { title: "Founders Roundtable: Scaling Systems", date: "Nov 05, 2025", type: "In-person / SF", desc: "An intimate discussion on when to rewrite and when to ride the technical debt." },
+              { title: "Design Systems in the Age of AI", date: "Nov 28, 2025", type: "Online", desc: "How tokenized design systems evolve when AI is doing the generation." }
+            ].map((event, i) => (
+              <motion.div 
+                key={i}
+                className="group flex flex-col md:flex-row md:items-center justify-between py-8 border-t border-border first:border-none hover:bg-secondary/30 transition-colors px-4 -mx-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="md:w-1/2 mb-4 md:mb-0">
+                  <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors">{event.title}</h3>
+                  <p className="text-muted-foreground">{event.desc}</p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-6 md:w-1/3 md:justify-end">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Calendar className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-bold tracking-widest uppercase">{event.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-bold tracking-widest uppercase">{event.type}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG PREVIEW */}
+      <section className="py-32 border-b border-border bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="md:w-2/3">
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Latest Insights</h2>
+              <p className="text-xl text-muted-foreground font-light">Thoughts on code, craft, and the future of the web.</p>
+            </div>
+            <Link href="/blog" className="flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary/80 transition-colors">
+              Read the Blog <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "The End of Boilerplate: Why Vibe Coding Works", tag: "AI & Creative", date: "Sep 15, 2025" },
+              { title: "Stop Centering Divs: Layouts for the Modern Web", tag: "Web Dev", date: "Sep 02, 2025" },
+              { title: "When to Hire Your First Engineer", tag: "Business", date: "Aug 20, 2025" }
+            ].map((post, i) => (
+              <motion.div 
+                key={i}
+                className="flex flex-col group cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="aspect-[3/2] bg-secondary mb-6 border border-border group-hover:border-primary/50 transition-colors" />
+                <div className="flex items-center gap-4 mb-4 text-xs font-bold uppercase tracking-widest">
+                  <span className="text-primary">{post.tag}</span>
+                  <span className="text-muted-foreground">{post.date}</span>
+                </div>
+                <Link href={`/blog/post-${i+1}`} className="text-2xl font-display font-bold group-hover:text-primary transition-colors block">
+                  {post.title}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section id="about" className="py-32 border-b border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block py-1 px-3 mb-8 border border-border text-muted-foreground uppercase tracking-widest text-xs font-bold">
+            About moaiohio
+          </span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-8">
+            We are a creative studio operating at the electric intersection of design, code, and AI.
+          </h2>
+          <p className="text-xl text-muted-foreground font-light leading-relaxed">
+            Founded on the belief that software should feel alive, we partner with visionary teams to build digital products that refuse to be ignored. We don't do templates. We don't do average. We build systems that perform and interfaces that captivate.
+          </p>
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section id="contact" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
+        {/* Huge background text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-10">
+          <h2 className="text-[15vw] font-display font-black leading-none whitespace-nowrap">LET'S BUILD</h2>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Ready to move fast?</h2>
+          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto font-light">
+            Whether you need a new brand platform, a technical rebuild, or strategic coaching—we're ready.
+          </p>
+          <a href="mailto:hello@moaiohio.com" className="inline-flex items-center gap-3 px-10 py-5 bg-background text-foreground font-bold text-xl uppercase tracking-wider hover:bg-background/90 hover:scale-105 transition-all shadow-2xl">
+            hello@moaiohio.com
+            <ArrowRight className="w-6 h-6 text-primary" />
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}
