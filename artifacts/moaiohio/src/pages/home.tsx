@@ -303,12 +303,11 @@ export function Home() {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Nexus Fintech", category: "Web Design / Dev", desc: "A high-performance trading dashboard built for retail investors." },
-              { title: "Aura Skincare", category: "E-commerce", desc: "Headless Shopify storefront with custom WebGL experiences." },
-              { title: "Vertex AI", category: "AI & Creative", desc: "Interactive documentation and playground for a new LLM platform." },
-              { title: "Lumina Workspace", category: "SaaS Application", desc: "Collaborative canvas editor with real-time multiplayer." }
+              { title: "Prospect-OS", category: "Vibecoded", desc: "A city sweeper web tool for mass prospecting — built fast, built sharp.", img: "/portfolio-prospect-os.png" },
+              { title: "WriterRon", category: "Vibecoded", desc: "An AI writing tool web prototype that turns prompts into polished prose.", img: "/portfolio-writerron.png" },
+              { title: "Work or Wonder", category: "Creative Work", desc: "A game of wonder — an interactive creative experience blending art and play.", img: "/portfolio-work-wonder.png" },
             ].map((project, i) => (
               <motion.div 
                 key={i}
@@ -319,10 +318,12 @@ export function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="aspect-[4/3] bg-secondary overflow-hidden mb-6 relative">
-                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                  <div className="w-full h-full bg-gradient-to-br from-card to-background flex items-center justify-center p-12">
-                    <div className="w-full h-full border border-border/50 bg-background/50 backdrop-blur-sm shadow-2xl transition-transform duration-700 group-hover:scale-105" />
-                  </div>
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
                 <div className="flex justify-between items-start">
                   <div>

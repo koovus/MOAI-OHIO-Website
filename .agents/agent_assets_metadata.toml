@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "zq8z2WEH4YzMNNru-2Hgx"
+uri = "file://artifacts/moaiohio/public/portfolio-prospect-os.png"
+type = "image"
+title = "prospect-os city sweep"
+
+[[generated]]
+id = "ddNl3lfvaaoR5-P9N6i_d"
+uri = "file://artifacts/moaiohio/public/portfolio-writerron.png"
+type = "image"
+title = "writerron ai writing"
+
+[[generated]]
+id = "39btWY_MiWJeJ-pbdJIXE"
+uri = "file://artifacts/moaiohio/public/portfolio-work-wonder.png"
+type = "image"
+title = "work or wonder game"
