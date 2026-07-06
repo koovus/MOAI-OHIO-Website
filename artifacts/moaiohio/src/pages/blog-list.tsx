@@ -23,7 +23,7 @@ export function BlogList() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Insights & Writing
+            Blog
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-muted-foreground max-w-3xl font-light"
