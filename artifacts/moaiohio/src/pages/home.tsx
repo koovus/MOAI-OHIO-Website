@@ -278,7 +278,7 @@ export function Home() {
               <h3 className="text-2xl font-display font-bold mb-4">Business Development Coaching</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">Strategic guidance that connects your technical decisions to real revenue outcomes. We work with founders who want to move with intention — building systems that scale without burning out.</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                {["Go-to-market strategy", "Founder-led growth systems", "Technical roadmap advisory", "Scaling & hiring frameworks", "Technology commercialization", "Deep tech coaching"].map((item) => (
+                {["Go-to-market strategy", "Founder-led growth systems", "Technical roadmap advisory", "Technology commercialization", "Deep tech coaching"].map((item) => (
                   <div key={item} className="border border-border p-4 text-sm text-muted-foreground flex items-start gap-2">
                     <Sparkles className="w-3 h-3 text-primary shrink-0 mt-0.5" />
                     {item}
