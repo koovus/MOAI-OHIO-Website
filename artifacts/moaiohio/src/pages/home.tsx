@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Code, PenTool, BrainCircuit, Rocket, Calendar, MapPin } from "lucide-react";
+import { ArrowRight, BrainCircuit, Rocket, Calendar, MapPin, Sparkles, Zap } from "lucide-react";
 import { useState } from "react";
 import { useSubmitContact } from "@workspace/api-client-react";
 
 const PROJECT_TYPES = [
-  "Brand platform",
-  "Technical rebuild",
-  "New product",
-  "Strategic coaching",
+  "Vibe coding prototype",
+  "AI workflow integration",
+  "Rapid MVP build",
+  "Business development coaching",
   "Other",
 ];
 
@@ -207,7 +207,7 @@ export function Home() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            We build for founders who think in systems and move fast. Electric, confident, and relentlessly focused on shipping things that work.
+            We build AI-powered prototypes at the speed of thought. Vibe coding, creative workflows, and strategic coaching for founders who ship.
           </motion.p>
           
           <motion.div
@@ -231,43 +231,60 @@ export function Home() {
       <section id="services" className="py-32 border-b border-border bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-20 md:w-2/3">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Our Services</h2>
-            <p className="text-xl text-muted-foreground font-light">We combine human intuition with AI leverage to build digital experiences that punch above their weight class.</p>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">What We Do</h2>
+            <p className="text-xl text-muted-foreground font-light">We build fast, AI-powered prototypes and coach founders to think in systems. Human creativity amplified by machine speed.</p>
           </div>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {/* Service 1 */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
-              <PenTool className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">Web Design</h3>
-              <p className="text-muted-foreground leading-relaxed">Beautiful, functional interfaces built for real users. We focus on striking visual direction combined with uncompromising usability.</p>
-            </motion.div>
-
-            {/* Service 2 */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
-              <Code className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">Web Development</h3>
-              <p className="text-muted-foreground leading-relaxed">Clean, performant code that ships and scales. We build resilient technical architectures that grow with your ambitions.</p>
-            </motion.div>
-
-            {/* Service 3 */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+            {/* Service 1 — Vibe Coding */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-1">
               <BrainCircuit className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">Vibe Coding / AI & Creative</h3>
-              <p className="text-muted-foreground leading-relaxed">AI-assisted development and creative workflows for the modern builder. Shipping at the speed of thought without losing the soul.</p>
+              <h3 className="text-2xl font-display font-bold mb-4">Vibe Coding Prototypes</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">AI-accelerated prototype development — from napkin sketch to working product in days. We translate your vision into functional, polished builds using the latest generative and AI-assisted tooling.</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {["Rapid MVP & prototype builds", "AI-assisted UI generation", "Full-stack vibe-coded apps", "Iterative delivery in real time"].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Sparkles className="w-3 h-3 text-primary shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
-            {/* Service 4 */}
+            {/* Service 2 — AI & Creative */}
             <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
+              <Zap className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-2xl font-display font-bold mb-4">AI & Creative Workflows</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">We design and implement AI-powered creative workflows that eliminate bottlenecks and unlock new modes of production. Shipping at the speed of thought without losing the soul.</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {["AI workflow design & integration", "Creative system automation", "Generative content pipelines", "Tool-stack audits & optimization"].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Sparkles className="w-3 h-3 text-primary shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Service 3 — Business Coaching */}
+            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-2">
               <Rocket className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-2xl font-display font-bold mb-4">Business Development Coaching</h3>
-              <p className="text-muted-foreground leading-relaxed">Strategic guidance to help founders grow intentionally. Connecting technical decisions to revenue outcomes.</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">Strategic guidance that connects your technical decisions to real revenue outcomes. We work with founders who want to move with intention — building systems that scale without burning out.</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                {["Go-to-market strategy", "Founder-led growth systems", "Technical roadmap advisory", "Scaling & hiring frameworks"].map((item) => (
+                  <div key={item} className="border border-border p-4 text-sm text-muted-foreground flex items-start gap-2">
+                    <Sparkles className="w-3 h-3 text-primary shrink-0 mt-0.5" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         </div>
