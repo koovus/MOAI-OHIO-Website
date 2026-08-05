@@ -29,7 +29,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li><a href="mailto:dan@moaiohio.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">dan@moaiohio.com</a></li>
               <li><a href="https://x.com/floozyspeak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">Twitter</a></li>
-              <li><a href="https://linkedin.com/company/moaiohio" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/in/dan-rockwell-a42388/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">LinkedIn</a></li>
             </ul>
           </div>
         </div>
