@@ -231,8 +231,8 @@ export function Home() {
       <section id="services" className="py-32 border-b border-border bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-20 md:w-2/3">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">What We Do</h2>
-            <p className="text-xl text-muted-foreground font-light">We build fast, AI-powered prototypes and coach founders to think in systems. Human creativity amplified by machine speed.</p>
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">We Live to Vibe Code</h2>
+            <p className="text-xl text-muted-foreground font-light">Vibe coding isn't a shortcut — it's a superpower. We obsess over the creative chemistry between human intent and AI execution. The result: real products, built absurdly fast, that don't feel rushed.</p>
           </div>
 
           <motion.div
@@ -246,7 +246,7 @@ export function Home() {
             <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-1">
               <BrainCircuit className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-2xl font-display font-bold mb-4">Vibe Coding Prototypes</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">AI-accelerated prototype development — from napkin sketch to working product in days. We translate your vision into functional, polished builds using the latest generative and AI-assisted tooling.</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">This is what we love most. You bring the idea — a rough sketch, a voice note, a napkin — and we turn it into a working, polished product in days. Not a mockup. Not a wireframe. A real thing you can ship or show investors.</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {["Rapid MVP & prototype builds", "AI-assisted UI generation", "Full-stack vibe-coded apps", "Iterative delivery in real time"].map((item) => (
                   <li key={item} className="flex items-center gap-2">
@@ -261,7 +261,7 @@ export function Home() {
             <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
               <Zap className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-2xl font-display font-bold mb-4">AI & Creative Workflows</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">We design and implement AI-powered creative workflows that eliminate bottlenecks and unlock new modes of production. Shipping at the speed of thought without losing the soul.</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">The same vibe coding instinct we bring to products, we bring to your process. We map where AI can accelerate your team's creative output and build the systems that make it stick — without killing the soul of the work.</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {["AI workflow design & integration", "Creative system automation", "Generative content pipelines", "Tool-stack audits & optimization"].map((item) => (
                   <li key={item} className="flex items-center gap-2">
@@ -276,7 +276,7 @@ export function Home() {
             <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-2">
               <Rocket className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-2xl font-display font-bold mb-4">Business Development Coaching</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">Strategic guidance that connects your technical decisions to real revenue outcomes. We work with founders who want to move with intention — building systems that scale without burning out.</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">For founders who've felt the rush of vibe coding but need help turning that momentum into a business. We bridge the gap between a brilliant prototype and a fundable, scalable company — connecting your technical edge to real market outcomes.</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                 {["Founder-led growth systems", "Technical roadmap advisory", "Technology commercialization", "Deep tech coaching"].map((item) => (
                   <div key={item} className="border border-border p-4 text-sm text-muted-foreground flex items-start gap-2">
