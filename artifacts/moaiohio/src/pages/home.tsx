@@ -417,8 +417,8 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
             <div className="md:w-2/3">
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Latest Insights</h2>
-              <p className="text-xl text-muted-foreground font-light">Thoughts on code, craft, and the future of the web.</p>
+              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Latest Groove</h2>
+              <p className="text-xl text-muted-foreground font-light">Things we're into right now — tools, spaces, and projects worth your attention.</p>
             </div>
             <Link href="/blog" className="flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary/80 transition-colors">
               Read the Blog <ArrowRight className="w-4 h-4" />
@@ -427,12 +427,15 @@ export function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "The End of Boilerplate: Why Vibe Coding Works", tag: "AI & Creative", date: "Sep 15, 2025" },
-              { title: "Stop Centering Divs: Layouts for the Modern Web", tag: "Web Dev", date: "Sep 02, 2025" },
-              { title: "When to Hire Your First Engineer", tag: "Business", date: "Aug 20, 2025" }
-            ].map((post, i) => (
-              <motion.div 
+              { title: "Box Squared", tag: "Tool", url: "https://spacetypegenerator.com/boxsquad" },
+              { title: "Buzz", tag: "Platform", url: "https://buzz.xyz/" },
+              { title: "SpaceType", tag: "Creative", url: "https://spacetypegenerator.com/" },
+            ].map((item, i) => (
+              <motion.a
                 key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex flex-col group cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -441,13 +444,12 @@ export function Home() {
               >
                 <div className="aspect-[3/2] bg-secondary mb-6 border border-border group-hover:border-primary/50 transition-colors" />
                 <div className="flex items-center gap-4 mb-4 text-xs font-bold uppercase tracking-widest">
-                  <span className="text-primary">{post.tag}</span>
-                  <span className="text-muted-foreground">{post.date}</span>
+                  <span className="text-primary">{item.tag}</span>
                 </div>
-                <Link href={`/blog/post-${i+1}`} className="text-2xl font-display font-bold group-hover:text-primary transition-colors block">
-                  {post.title}
-                </Link>
-              </motion.div>
+                <span className="text-2xl font-display font-bold group-hover:text-primary transition-colors block">
+                  {item.title}
+                </span>
+              </motion.a>
             ))}
           </div>
         </div>
