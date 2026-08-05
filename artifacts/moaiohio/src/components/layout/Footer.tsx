@@ -28,7 +28,7 @@ export function Footer() {
             <h4 className="font-display font-semibold text-foreground mb-4 uppercase tracking-wider text-sm">Connect</h4>
             <ul className="space-y-3">
               <li><a href="mailto:dan@moaiohio.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">dan@moaiohio.com</a></li>
-              <li><a href="https://twitter.com/moaiohio" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">Twitter</a></li>
+              <li><a href="https://x.com/floozyspeak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">Twitter</a></li>
               <li><a href="https://linkedin.com/company/moaiohio" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">LinkedIn</a></li>
             </ul>
           </div>
