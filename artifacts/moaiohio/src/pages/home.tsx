@@ -379,9 +379,9 @@ export function Home() {
 
           <div className="flex flex-col">
             {[
-              { title: "Vibe Coding 101: AI Workflows for Frontend", date: "Oct 12, 2025", type: "Online", desc: "Learn how to integrate AI tools directly into your creative development process." },
-              { title: "Founders Roundtable: Scaling Systems", date: "Nov 05, 2025", type: "In-person / SF", desc: "An intimate discussion on when to rewrite and when to ride the technical debt." },
-              { title: "Design Systems in the Age of AI", date: "Nov 28, 2025", type: "Online", desc: "How tokenized design systems evolve when AI is doing the generation." }
+              { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Sep 17, 2026", type: "In-person", desc: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
+              { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Oct 15, 2026", type: "In-person", desc: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
+              { title: "VIBE Session Training 001", date: "Date TBA", type: "Coming Soon", desc: "Our inaugural hands-on vibe coding training session. Details dropping soon — stay close." }
             ].map((event, i) => (
               <motion.div 
                 key={i}
