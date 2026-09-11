@@ -337,37 +337,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
-      <section className="py-32 border-b border-border bg-primary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-6xl font-display font-bold mb-20 text-center">What Founders Say</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { quote: "moaiohio transformed our online presence. They move faster than any agency I've worked with, and the quality is relentless.", name: "Sarah J.", role: "CEO, TechFlow" },
-              { quote: "They don't just write code; they understand the business physics behind what they're building. True partners.", name: "David M.", role: "Founder, ScaleUp" },
-              { quote: "Their vibe coding approach meant we went from napkin sketch to a production-ready MVP in under a month.", name: "Elena R.", role: "CTO, Venture AI" }
-            ].map((t, i) => (
-              <motion.div 
-                key={i} 
-                className="bg-card border border-border p-8 relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="text-primary text-6xl font-display leading-none absolute top-4 left-4 opacity-20">"</div>
-                <p className="text-lg mb-8 relative z-10 font-light mt-4">"{t.quote}"</p>
-                <div>
-                  <p className="font-bold text-foreground">{t.name}</p>
-                  <p className="text-muted-foreground text-sm">{t.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* EVENTS SECTION */}
       <section className="py-32 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
