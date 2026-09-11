@@ -21,7 +21,6 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             <a href="/#services" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Services</a>
             <a href="/#portfolio" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Work</a>
-            <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Blog</Link>
             <a href="/#about" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">About</a>
             <a href="/#contact" className="px-5 py-2.5 bg-primary text-primary-foreground font-semibold uppercase tracking-wider text-xs hover:bg-primary/90 transition-colors" data-testid="nav-cta">
               Let's Talk
@@ -41,7 +40,6 @@ export function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="/#services" onClick={closeMenu} className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary">Services</a>
             <a href="/#portfolio" onClick={closeMenu} className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary">Work</a>
-            <Link href="/blog" onClick={closeMenu} className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary">Blog</Link>
             <a href="/#about" onClick={closeMenu} className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary">About</a>
             <a href="/#contact" onClick={closeMenu} className="block px-3 py-2 text-base font-bold text-primary hover:bg-secondary">Let's Talk</a>
           </div>

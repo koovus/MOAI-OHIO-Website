@@ -19,7 +19,6 @@ export function Footer() {
             <ul className="space-y-3">
               <li><Link href="/#services" className="text-muted-foreground hover:text-primary transition-colors text-sm">We Live to Vibe Code</Link></li>
               <li><Link href="/#portfolio" className="text-muted-foreground hover:text-primary transition-colors text-sm">Selected Work</Link></li>
-              <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors text-sm">Insights & Blog</Link></li>
               <li><Link href="/#about" className="text-muted-foreground hover:text-primary transition-colors text-sm">About Us</Link></li>
             </ul>
           </div>
