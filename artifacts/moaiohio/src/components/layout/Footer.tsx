@@ -10,7 +10,7 @@ export function Footer() {
               moai<span className="text-primary">ohio</span>
             </Link>
             <p className="text-muted-foreground max-w-sm">
-              A forward-thinking web studio where craft meets code and creativity is the product — built for founders who think in systems and move fast.
+              We are in unique times. Vibe coding is part of a trend that will upend the norms and make way for all kinds of innovation. Let's make some our own!!
             </p>
           </div>
           
