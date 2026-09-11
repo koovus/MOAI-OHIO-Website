@@ -10,7 +10,7 @@ export function Footer() {
               moai<span className="text-primary">ohio</span>
             </Link>
             <p className="text-muted-foreground max-w-sm">
-              We are in unique times. Vibe coding is part of a trend that will upend the norms and make way for all kinds of innovation. Let's make some our own!!
+              We are in unique times. Vibe coding is part of a trend that will upend the norms and make way for all kinds of innovation.
             </p>
           </div>
           
