@@ -304,7 +304,7 @@ export function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "KDP Trend Scout", category: "Vibecoded", desc: "A city sweeper web tool for mass prospecting — built fast, built sharp.", img: "/portfolio-prospect-os.png" },
+              { title: "KDP Trend Scout", category: "Vibecoded", desc: "A trend and analysis tool for Amazon's Kindle Direct Publishing Platform", img: "/portfolio-prospect-os.png" },
               { title: "WriterRon", category: "Vibecoded", desc: "An AI writing tool web prototype that turns prompts into polished prose.", img: "/portfolio-writerron.png" },
               { title: "Work or Wonder", category: "Creative Work", desc: "A game of wonder — an interactive creative experience blending art and play.", img: "/portfolio-work-wonder.png" },
             ].map((project, i) => (
