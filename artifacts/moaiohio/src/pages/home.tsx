@@ -397,9 +397,9 @@ export function Home() {
 
       {/* CONTACT SECTION */}
       <section id="contact" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
-        {/* Huge background text */}
+        {/* Readable oversized background text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-10">
-          <h2 className="text-[15vw] font-display font-black leading-none whitespace-nowrap">LET'S BUILD</h2>
+          <h2 className="text-[clamp(4rem,12vw,11rem)] font-display font-black leading-none tracking-tight whitespace-nowrap">LET'S TALK</h2>
         </div>
 
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
