@@ -73,3 +73,17 @@ mtime_ms = 1790956149958
 storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/1e817fa3-0259-464e-b406-316c34ad97ba/adf8c485-45d6-4a72-8881-9703796c846a"
 storage_version_token = "1790956159977043"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "hj9g6dh0V4CkeR44hLwQe"
+uri = "file://design-previews/playful-island-website.jpg"
+type = "image"
+title = "moaiohio — Playful Island Studio"
+description = "The selected island-inspired look, now applied to the website preview."
+logical_id = "59b58aec-7fed-4a7f-9a92-12a8a7485505"
+content_hash = "sha256:bdcec65600fc4d560703221f6c83d5a6ea667360cc8c36898c318f863c3fc50d"
+size = 78399
+mtime_ms = 1790956843902
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/59b58aec-7fed-4a7f-9a92-12a8a7485505/ac07bd59-40f8-409b-bdc9-82850c90f2fb"
+storage_version_token = "1790956941266362"
+content_type = "image/jpeg"

@@ -21,9 +21,9 @@ function Router() {
 }
 
 function App() {
-  // Force dark mode
+  // The approved island design uses a light palette.
   useEffect(() => {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("dark");
   }, []);
 
   return (

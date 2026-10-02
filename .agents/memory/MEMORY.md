@@ -1,2 +1,2 @@
-- [Brand direction](brand-direction.md) — Moai imagery is an intended brand theme; brighter Hawaiian-inspired design is welcome.
+- [Brand direction](brand-direction.md) — Playful Island Studio is the approved website direction; Moai imagery and a brighter Hawaiian-inspired mood are welcome.
 - [Canvas shape IDs](canvas-shape-ids.md) — Reserved-frame notices can prefix IDs with “shape:”; use the ID returned by the live board state.

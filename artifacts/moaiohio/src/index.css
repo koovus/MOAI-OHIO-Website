@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -97,53 +97,53 @@
 }
 
 :root {
-  --button-outline: rgba(255,255,255, .10);
-  --badge-outline: rgba(255,255,255, .05);
+  --button-outline: rgba(20,57,54, .10);
+  --badge-outline: rgba(20,57,54, .05);
 
   --opaque-button-border-intensity: 9;
 
-  --elevate-1: rgba(255,255,255, .04);
-  --elevate-2: rgba(255,255,255, .09);
+  --elevate-1: rgba(20,57,54, .04);
+  --elevate-2: rgba(20,57,54, .09);
 
-  /* Deep space blue/black for default dark */
-  --background: 240 10% 4%;
-  --foreground: 210 20% 98%;
+  /* Playful Island Studio: warm paper, mint, coral and deep ocean green. */
+  --background: 42 100% 95.5%;
+  --foreground: 175 48% 15%;
 
-  --border: 240 10% 12%;
-  --card: 240 10% 6%;
-  --card-foreground: 210 20% 98%;
-  --card-border: 240 10% 12%;
+  --border: 105 20% 81%;
+  --card: 47 58% 91%;
+  --card-foreground: 175 48% 15%;
+  --card-border: 105 20% 81%;
 
-  --sidebar: 240 10% 6%;
-  --sidebar-foreground: 210 20% 98%;
-  --sidebar-border: 240 10% 12%;
-  --sidebar-primary: 180 100% 50%;
-  --sidebar-primary-foreground: 240 10% 4%;
-  --sidebar-accent: 240 10% 12%;
-  --sidebar-accent-foreground: 210 20% 98%;
-  --sidebar-ring: 180 100% 50%;
+  --sidebar: 47 58% 91%;
+  --sidebar-foreground: 175 48% 15%;
+  --sidebar-border: 105 20% 81%;
+  --sidebar-primary: 176 54% 28%;
+  --sidebar-primary-foreground: 42 100% 95.5%;
+  --sidebar-accent: 91 53% 85%;
+  --sidebar-accent-foreground: 175 48% 15%;
+  --sidebar-ring: 176 54% 28%;
 
-  --popover: 240 10% 6%;
-  --popover-foreground: 210 20% 98%;
-  --popover-border: 240 10% 12%;
+  --popover: 42 100% 95.5%;
+  --popover-foreground: 175 48% 15%;
+  --popover-border: 105 20% 81%;
 
-  --primary: 180 100% 50%;
-  --primary-foreground: 240 10% 4%;
+  --primary: 176 54% 28%;
+  --primary-foreground: 42 100% 95.5%;
 
-  --secondary: 240 10% 12%;
-  --secondary-foreground: 210 20% 98%;
+  --secondary: 91 53% 85%;
+  --secondary-foreground: 175 48% 15%;
 
-  --muted: 240 10% 12%;
-  --muted-foreground: 240 5% 65%;
+  --muted: 47 58% 91%;
+  --muted-foreground: 168 14% 39%;
 
-  --accent: 280 100% 60%;
-  --accent-foreground: 210 20% 98%;
+  --accent: 12 91% 66%;
+  --accent-foreground: 175 48% 15%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 20% 98%;
 
-  --input: 240 10% 12%;
-  --ring: 180 100% 50%;
+  --input: 105 20% 81%;
+  --ring: 176 54% 28%;
   
   --chart-1: 180 100% 50%;
   --chart-2: 280 100% 60%;
@@ -152,9 +152,9 @@
   --chart-5: 200 100% 50%;
 
   --app-font-sans: 'Space Grotesk', sans-serif;
-  --app-font-display: 'Syne', sans-serif;
+  --app-font-display: 'Outfit', sans-serif;
   --app-font-serif: Georgia, serif;
-  --app-font-mono: Menlo, monospace;
+  --app-font-mono: 'DM Mono', monospace;
   
   --radius: 0rem;
   

@@ -1,418 +1,81 @@
-import { motion } from "framer-motion";
-import { ArrowRight, BrainCircuit, Rocket, Calendar, MapPin, Sparkles, Zap } from "lucide-react";
-import { useState } from "react";
-import { useSubmitContact } from "@workspace/api-client-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Code2, Compass, Leaf, MapPin, Orbit, Sparkles, Zap } from "lucide-react";
+import { ContactForm } from "@/components/contact/ContactForm";
 
-const PROJECT_TYPES = [
-  "Vibe coding prototype",
-  "AI workflow integration",
-  "Rapid MVP build",
-  "Business development coaching",
-  "Other",
+const assetBase = import.meta.env.BASE_URL;
+const projects = [
+  { title: "KDP Trend Scout", kind: "Vibecoded", description: "A trend and analysis tool for Amazon's Kindle Direct Publishing Platform", image: assetBase + "portfolio-prospect-os.png", tone: "project-lime" },
+  { title: "WriterRon", kind: "Vibecoded", description: "An AI writing tool web prototype that turns prompts into polished prose.", image: assetBase + "portfolio-writerron.png", tone: "project-blue" },
+  { title: "Work or Wonder", kind: "Creative Work", description: "A game of wonder — an interactive creative experience blending art and play.", image: assetBase + "portfolio-work-wonder.png", tone: "project-coral" },
+];
+const events = [
+  { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Sep 17, 2026", type: "In-person", description: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
+  { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Oct 15, 2026", type: "In-person", description: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
+  { title: "VIBE Session Training 001", date: "Date TBA", type: "Coming Soon", description: "Our inaugural hands-on vibe coding training session. Details dropping soon — stay close." },
 ];
 
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", projectType: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-
-  const mutation = useSubmitContact();
-
-  function validate() {
-    const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "Name is required";
-    if (!form.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
-    if (!form.message.trim()) e.message = "Message is required";
-    return e;
-  }
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => { const n = { ...prev }; delete n[name]; return n; });
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const v = validate();
-    if (Object.keys(v).length > 0) { setErrors(v); return; }
-    mutation.mutate(
-      { data: { name: form.name.trim(), email: form.email.trim(), projectType: form.projectType || undefined, message: form.message.trim() } },
-      { onSuccess: () => setSubmitted(true) }
-    );
-  }
-
-  if (submitted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center py-16"
-      >
-        <div className="text-5xl mb-6">✓</div>
-        <h3 className="text-3xl font-display font-bold mb-4">Message sent!</h3>
-        <p className="text-xl opacity-80 font-light">We'll be in touch soon.</p>
-      </motion.div>
-    );
-  }
-
-  const inputClass = "w-full bg-primary-foreground/10 border border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/40 px-4 py-3 focus:outline-none focus:border-primary-foreground transition-colors";
-  const labelClass = "block text-sm font-bold uppercase tracking-wider mb-2 opacity-80";
-  const errorClass = "mt-1 text-sm text-red-300";
-
-  return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="name" className={labelClass}>Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            placeholder="Your name"
-            value={form.name}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          {errors.name && <p className={errorClass}>{errors.name}</p>}
-        </div>
-        <div>
-          <label htmlFor="email" className={labelClass}>Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="you@example.com"
-            value={form.email}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          {errors.email && <p className={errorClass}>{errors.email}</p>}
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="projectType" className={labelClass}>Project type <span className="normal-case font-normal opacity-60">(optional)</span></label>
-        <select
-          id="projectType"
-          name="projectType"
-          value={form.projectType}
-          onChange={handleChange}
-          className={inputClass}
-        >
-          <option value="">Select a project type…</option>
-          {PROJECT_TYPES.map((t) => (
-            <option key={t} value={t}>{t}</option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="message" className={labelClass}>Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          placeholder="Tell us about your project…"
-          value={form.message}
-          onChange={handleChange}
-          className={inputClass + " resize-none"}
-        />
-        {errors.message && <p className={errorClass}>{errors.message}</p>}
-      </div>
-
-      {mutation.isError && (
-        <p className="text-red-300 text-sm">
-          {(mutation.error as Error)?.message ?? "Something went wrong. Please try again."}
-        </p>
-      )}
-
-      <button
-        type="submit"
-        disabled={mutation.isPending}
-        className="w-full inline-flex items-center justify-center gap-3 px-10 py-5 bg-background text-foreground font-bold text-lg uppercase tracking-wider hover:bg-background/90 hover:scale-[1.02] transition-all shadow-2xl disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
-      >
-        {mutation.isPending ? "Sending…" : (
-          <>
-            Send message
-            <ArrowRight className="w-5 h-5 text-primary" />
-          </>
-        )}
-      </button>
-    </form>
-  );
-}
-
 export function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring" as const, stiffness: 100 }
-    }
-  };
-
   return (
-    <div className="w-full">
-      {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-border">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-background mix-blend-multiply z-10" />
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] mix-blend-screen" />
-          
-          {/* Subtle noise/grid overlay */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-20 pointer-events-none" />
-        </div>
-        
-        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 flex flex-col items-center text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="inline-block py-1 px-3 mb-6 border border-primary/30 bg-primary/10 text-primary uppercase tracking-widest text-xs font-bold rounded-none">
-              Future Forward Web Studio
-            </span>
-          </motion.div>
-          
-          <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter leading-[1.1] mb-8 max-w-5xl"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Craft Meets Code. <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary">Creativity is the Product.</span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mb-12 font-light"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            We build AI-powered prototypes at the speed of thought. Vibe coding, creative workflows, and strategic coaching for founders who ship.
-          </motion.p>
-          
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <a href="#contact" className="px-8 py-4 bg-primary text-primary-foreground font-bold text-lg uppercase tracking-wider hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group data-[testid='hero-cta']">
-              Start a Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#portfolio" className="px-8 py-4 bg-transparent border border-border text-foreground font-bold text-lg uppercase tracking-wider hover:bg-secondary transition-all flex items-center justify-center">
-              View Our Work
-            </a>
-          </motion.div>
-        </div>
-      </section>
+    <>
 
-      {/* SERVICES SECTION */}
-      <section id="services" className="py-32 border-b border-border bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-20 md:w-2/3">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">We Live to Vibe Code</h2>
-            <p className="text-xl text-muted-foreground font-light">Vibe coding isn't a shortcut — it's a superpower. We obsess over the creative chemistry between human intent and AI execution. The result: real products, built absurdly fast, that don't feel rushed.</p>
+        <section className="play-hero" aria-labelledby="hero-heading">
+          <div className="hero-scribble scribble-one">Ideas<br />in motion</div>
+          <div className="hero-copy">
+            <div className="hero-kicker"><span className="kicker-star">✳</span> A creative studio for founders</div>
+            <h1 id="hero-heading" data-testid="text-hero-heading">Craft meets<br /><span>code.</span><br />Creativity is<br className="mobile-break" /> the product.</h1>
+            <p>We build AI-powered prototypes at the speed of thought. Vibe coding, creative workflows, and strategic coaching for founders who ship.</p>
+            <div className="hero-actions"><a className="hero-primary" href="#contact" data-testid="hero-cta">Start a Project <ArrowRight size={18} /></a><a className="hero-secondary" href="#portfolio" data-testid="link-hero-work">View Our Work <ArrowDown size={16} /></a></div>
+            <div className="hero-coordinate"><Compass size={15} /> Ohio-based <span>·</span> Curious everywhere</div>
           </div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {/* Service 1 — Vibe Coding */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-1">
-              <BrainCircuit className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">Vibe Coding Prototypes</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">This is what we love most. You bring the idea — a rough sketch, a voice note, a napkin — and we turn it into a working, polished product in days. Not a mockup. Not a wireframe. A real thing you can ship or show investors.</p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {["Rapid MVP & prototype builds", "AI-assisted UI generation", "Full-stack vibe-coded apps", "Iterative delivery in real time"].map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <Sparkles className="w-3 h-3 text-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Service 2 — AI & Creative */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group">
-              <Zap className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">AI & Creative Workflows</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">The same vibe coding instinct we bring to products, we bring to your process. We map where AI can accelerate your team's creative output and build the systems that make it stick — without killing the soul of the work.</p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {["AI workflow design & integration", "Creative system automation", "Generative content pipelines", "Tool-stack audits & optimization"].map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <Sparkles className="w-3 h-3 text-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Service 3 — Business Coaching */}
-            <motion.div variants={itemVariants} className="bg-card p-12 hover:bg-secondary/50 transition-colors group md:col-span-2">
-              <Rocket className="w-12 h-12 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" />
-              <h3 className="text-2xl font-display font-bold mb-4">Business Development Coaching</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">For founders who've felt the rush of vibe coding but need help turning that momentum into a business. We bridge the gap between a brilliant prototype and a fundable, scalable company — connecting your technical edge to real market outcomes.</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                {["Founder-led growth systems", "Technical roadmap advisory", "Technology commercialization", "Deep tech coaching"].map((item) => (
-                  <div key={item} className="border border-border p-4 text-sm text-muted-foreground flex items-start gap-2">
-                    <Sparkles className="w-3 h-3 text-primary shrink-0 mt-0.5" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* PORTFOLIO SECTION */}
-      <section id="portfolio" className="py-32 border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-            <div className="md:w-2/3">
-              <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Selected Work</h2>
-              <p className="text-xl text-muted-foreground font-light">Artifacts of our obsession with craft.</p>
-            </div>
-            <a href="#" className="flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary/80 transition-colors">
-              View Archive <ArrowRight className="w-4 h-4" />
-            </a>
+          <div className="hero-art-wrap">
+            <div className="hero-orbit orbit-a" /><div className="hero-orbit orbit-b" />
+            <img className="hero-muse" src={assetBase + "playful-moai-muse.png"} data-testid="img-island-moai" alt="Playful illustrated Moai studio muse among sun and tropical leaves" />
+            <span className="art-sticker sticker-code"><Code2 size={17} /> MAKE IT REAL</span>
+            <span className="art-sticker sticker-ai"><Sparkles size={15} /> AI + HUMAN</span>
+            <span className="art-caption">A little weird.<br />A lot useful.</span>
+            <span className="art-number">OH / 001</span>
           </div>
+          <a className="hero-down" href="#services" aria-label="Scroll to services" data-testid="link-scroll-services"><span>Scroll to explore</span><ArrowDown size={16} /></a>
+          <div className="hero-side-note">NOT A TEMPLATE STUDIO</div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "KDP Trend Scout", category: "Vibecoded", desc: "A trend and analysis tool for Amazon's Kindle Direct Publishing Platform", img: "/portfolio-prospect-os.png" },
-              { title: "WriterRon", category: "Vibecoded", desc: "An AI writing tool web prototype that turns prompts into polished prose.", img: "/portfolio-writerron.png" },
-              { title: "Work or Wonder", category: "Creative Work", desc: "A game of wonder — an interactive creative experience blending art and play.", img: "/portfolio-work-wonder.png" },
-            ].map((project, i) => (
-              <motion.div 
-                key={i}
-                className="group relative cursor-pointer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="aspect-[4/3] bg-secondary overflow-hidden mb-6 relative">
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <span className="text-primary text-sm font-bold uppercase tracking-widest mb-2 block">{project.category}</span>
-                    <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                    <p className="text-muted-foreground">{project.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        <section className="intro-strip" aria-label="Studio focus"><span><Zap size={15} /> Built at the speed of thought</span><i>✳</i><span>Ohio roots, open horizons</span><i>✳</i><span>Good ideas deserve to ship</span></section>
+
+        <section className="play-section services-section" id="services">
+          <div className="section-head">
+            <div><span className="eyebrow">01 / THE GOOD STUFF</span><h2>We Live to<br /><span>Vibe Code.</span></h2></div>
+            <p>Vibe coding isn't a shortcut — it's a superpower. We obsess over the creative chemistry between human intent and AI execution. The result: real products, built absurdly fast, that don't feel rushed.</p>
           </div>
-        </div>
-      </section>
-
-      {/* EVENTS SECTION */}
-      <section className="py-32 border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Upcoming Events</h2>
-            <p className="text-xl text-muted-foreground font-light">Workshops and sessions for the builder community.</p>
+          <div className="service-board">
+            <article className="service-card service-one"><div className="service-top"><span className="service-index">01</span><span className="service-doodle"><Code2 /></span></div><h3>Vibe Coding<br />Prototypes</h3><p>This is what we love most. You bring the idea — a rough sketch, a voice note, a napkin — and we turn it into a working, polished product in days. Not a mockup. Not a wireframe. A real thing you can ship or show investors.</p><ul><li>Rapid MVP & prototype builds</li><li>AI-assisted UI generation</li><li>Full-stack vibe-coded apps</li><li>Iterative delivery in real time</li></ul></article>
+            <article className="service-card service-two"><div className="service-top"><span className="service-index">02</span><span className="service-doodle"><Orbit /></span></div><h3>AI & Creative<br />Workflows</h3><p>The same vibe coding instinct we bring to products, we bring to your process. We map where AI can accelerate your team's creative output and build the systems that make it stick — without killing the soul of the work.</p><ul><li>AI workflow design & integration</li><li>Creative system automation</li><li>Generative content pipelines</li><li>Tool-stack audits & optimization</li></ul></article>
+            <article className="service-card service-three"><div className="service-top"><span className="service-index">03</span><span className="service-doodle"><Compass /></span></div><h3>Business Development<br />Coaching</h3><p>For founders who've felt the rush of vibe coding but need help turning that momentum into a business. We bridge the gap between a brilliant prototype and a fundable, scalable company — connecting your technical edge to real market outcomes.</p><div className="coaching-tags"><span>Founder-led growth systems</span><span>Technical roadmap advisory</span><span>Technology commercialization</span><span>Deep tech coaching</span></div></article>
           </div>
+        </section>
 
-          <div className="flex flex-col">
-            {[
-              { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Sep 17, 2026", type: "In-person", desc: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
-              { title: "Wakeup Startup — Central Ohio Startup Pitch Event", date: "Oct 15, 2026", type: "In-person", desc: "Central Ohio's premier founder pitch event. Come watch bold ideas compete for real attention." },
-              { title: "VIBE Session Training 001", date: "Date TBA", type: "Coming Soon", desc: "Our inaugural hands-on vibe coding training session. Details dropping soon — stay close." }
-            ].map((event, i) => (
-              <motion.div 
-                key={i}
-                className="group flex flex-col md:flex-row md:items-center justify-between py-8 border-t border-border first:border-none hover:bg-secondary/30 transition-colors px-4 -mx-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="md:w-1/2 mb-4 md:mb-0">
-                  <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors">{event.title}</h3>
-                  <p className="text-muted-foreground">{event.desc}</p>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-6 md:w-1/3 md:justify-end">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-bold tracking-widest uppercase">{event.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <MapPin className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-bold tracking-widest uppercase">{event.type}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        <section className="work-section" id="portfolio">
+          <div className="work-heading"><div><span className="eyebrow">02 / MADE WITH CURIOSITY</span><h2>Selected<br /><em>work.</em></h2></div><div className="work-heading-note"><span className="hand-star">✳</span><p>Artifacts of our obsession with craft.</p><a href="#contact" data-testid="link-work-contact">Have an idea? Let's make it <ArrowUpRight size={15} /></a></div></div>
+          <div className="project-grid">{projects.map((project, index) => <article className={`project-card ${project.tone}`} key={project.title}><div className="project-visual"><div className="project-number">0{index + 1}</div><img src={project.image} alt={project.title} loading="lazy" /><span className="project-arrow"><ArrowUpRight size={19} /></span></div><div className="project-meta"><span>{project.kind}</span><span>MOAIOHIO / {String(index + 1).padStart(2, "0")}</span></div><h3>{project.title}</h3><p>{project.description}</p></article>)}</div>
+        </section>
+
+        <section className="events-section">
+          <div className="events-stamp"><Leaf size={25} /><span>SHOW UP<br />CURIOUS</span></div>
+          <div className="events-main"><div className="events-heading"><span className="eyebrow">03 / COME MAKE THINGS</span><h2>Upcoming<br /><span>Events.</span></h2><p>Workshops and sessions for the builder community.</p></div>
+            <div className="event-list">{events.map((event, index) => <article className="event-row" key={`${event.title}-${event.date}`}><span className="event-count">0{index + 1}</span><div className="event-info"><h3>{event.title}</h3><p>{event.description}</p></div><div className="event-details"><span><CalendarDays size={15} />{event.date}</span><span><MapPin size={15} />{event.type}</span></div></article>)}</div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ABOUT SECTION */}
-      <section id="about" className="py-32 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block py-1 px-3 mb-8 border border-border text-muted-foreground uppercase tracking-widest text-xs font-bold">
-            About moaiohio
-          </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-8">
-            We are a creative studio operating at the electric intersection of design, code, and AI.
-          </h2>
-          <p className="text-xl text-muted-foreground font-light leading-relaxed">
-            Founded on the belief that software should feel alive, we partner with visionary teams to build digital products that refuse to be ignored. We don't do templates. We don't do average. We build systems that perform and interfaces that captivate.
-          </p>
-        </div>
-      </section>
+        <section className="about-section" id="about">
+          <div className="about-doodle">✳</div><span className="eyebrow">04 / THE STUDIO</span>
+          <h2>We are a creative studio operating at the electric intersection of <span>design, code, and AI.</span></h2>
+          <p>Founded on the belief that software should feel alive, we partner with visionary teams to build digital products that refuse to be ignored. We don't do templates. We don't do average. We build systems that perform and interfaces that captivate.</p>
+          <div className="about-signoff"><span className="signature">moaiohio</span><span>Independent minds. Collaborative spirit.</span></div>
+        </section>
 
-      {/* CONTACT SECTION */}
-      <section id="contact" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
-        {/* Readable oversized background text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-10">
-          <h2 className="text-[clamp(4rem,12vw,11rem)] font-display font-black leading-none tracking-tight whitespace-nowrap">LET'S TALK</h2>
-        </div>
+        <section className="contact-section" id="contact">
+          <div className="contact-backdrop" aria-hidden="true">LET'S TALK</div>
+          <div className="contact-content"><div className="contact-copy"><span className="eyebrow">05 / YOUR MOVE</span><h2>Ready to<br /><em>move fast?</em></h2><p>Whether you need a new brand platform, a technical rebuild, or strategic coaching—we're ready.</p><span className="contact-aside"><span className="contact-dot" /> Good ideas start with a conversation.</span></div><div className="contact-form-wrap"><ContactForm /></div></div>
+        </section>
 
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl md:text-7xl font-display font-bold mb-8">Ready to move fast?</h2>
-            <p className="text-xl md:text-2xl opacity-90 font-light">
-              Whether you need a new brand platform, a technical rebuild, or strategic coaching—we're ready.
-            </p>
-          </div>
-
-          <ContactForm />
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

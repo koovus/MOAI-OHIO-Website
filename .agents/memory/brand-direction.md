@@ -5,6 +5,8 @@ description: User-stated visual identity for moaiohio redesign work.
 
 The user says moaiohio is “working with a moai theme,” wants a “brighter look,” and welcomes a Hawaiian theme and Moai imagery where possible.
 
-**Why:** The user stated this brand direction while requesting visual redesign examples.
+The user selected the “Playful Island Studio look” as the direction to use for the website.
 
-**How to apply:** Use this as context for visual exploration. Keep Moai imagery identifiable and distinguish its Rapa Nui origin from Hawaiian influences. Exploration does not approve replacing the live website.
+**Why:** The user requested redesign examples, then explicitly chose Playful Island Studio.
+
+**How to apply:** Treat that chosen direction as the baseline for future visual changes, rather than reopening the original alternatives unless asked. Keep Moai imagery identifiable and distinguish its Rapa Nui origin from Hawaiian influences.
