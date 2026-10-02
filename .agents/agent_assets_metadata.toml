@@ -87,3 +87,17 @@ mtime_ms = 1790956843902
 storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/59b58aec-7fed-4a7f-9a92-12a8a7485505/ac07bd59-40f8-409b-bdc9-82850c90f2fb"
 storage_version_token = "1790956941266362"
 content_type = "image/jpeg"
+
+[[outputs]]
+id = "4BHRsMTNFJFjj4wzPO_mG"
+uri = "file://design-previews/playful-island-marketing.jpg"
+type = "image"
+title = "moaiohio — New Marketing Copy"
+description = "Updated hero messaging and calls to action, with the full copy rewrite applied throughout the website preview."
+logical_id = "2ef9be47-4175-4234-adfc-4cc23ef56bac"
+content_hash = "sha256:2e2eec28b4869339f0453920203a4b10d7978fb3a0480fee5fbdea511cbbb693"
+size = 76262
+mtime_ms = 1790963235246
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/2ef9be47-4175-4234-adfc-4cc23ef56bac/9797af5f-2a51-4984-a23a-0169f71282d1"
+storage_version_token = "1790963428968561"
+content_type = "image/jpeg"
