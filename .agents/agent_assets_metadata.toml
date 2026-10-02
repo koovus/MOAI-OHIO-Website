@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "zq8z2WEH4YzMNNru-2Hgx"
@@ -18,3 +17,59 @@ id = "39btWY_MiWJeJ-pbdJIXE"
 uri = "file://artifacts/moaiohio/public/portfolio-work-wonder.png"
 type = "image"
 title = "work or wonder game"
+
+[[outputs]]
+id = "N9ZjD6y3qyFshOTnn3iXY"
+uri = "file://design-previews/sunlit-tropical.jpg"
+type = "image"
+title = "1 — Sunlit Tropical"
+description = "Bright coastal landscape, warm cream and teal, and a prominent Moai."
+logical_id = "61ed6f76-5aad-41f2-b85a-7613bf22b5c3"
+content_hash = "sha256:def2682b711dc2715081d7abf736c5f98318551ec4d483409d91817f7fbc031b"
+size = 117560
+mtime_ms = 1790956038409
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/61ed6f76-5aad-41f2-b85a-7613bf22b5c3/a73cd540-c96b-4e2b-b974-b6f63d367081"
+storage_version_token = "1790956039473221"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "ZBrs4mjuo6s1lg_doQg11"
+uri = "file://design-previews/moai-sculpture-studio.jpg"
+type = "image"
+title = "2 — Moai Sculpture Studio"
+description = "Warm stone tones, deep green, and a refined sculptural studio feel."
+logical_id = "6204d6e0-02a4-43cb-95ff-b0290f3a3994"
+content_hash = "sha256:a862a2d00a7c611e0477dc90e56e35c70a61bebd2d89f4d5ef95e767d0db822d"
+size = 100701
+mtime_ms = 1790956038410
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/6204d6e0-02a4-43cb-95ff-b0290f3a3994/967e9f19-e503-4f5e-979a-4af2c9bd5c20"
+storage_version_token = "1790956040142961"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "FFVQT0gFQnLDV4sdryyqs"
+uri = "file://design-previews/playful-island-studio.jpg"
+type = "image"
+title = "3 — Playful Island Studio"
+description = "Mint and coral with tropical leaves and an illustrated Moai character."
+logical_id = "bd498214-372d-47f4-abb4-f550b71d9ead"
+content_hash = "sha256:b22b8f3a571e1ef9eabe83be23d4f701c1c62964012bfd29db53a075e53d8ea7"
+size = 78891
+mtime_ms = 1790956038414
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/bd498214-372d-47f4-abb4-f550b71d9ead/6e6c741e-c691-4bca-907d-521d7b3de2cb"
+storage_version_token = "1790956040829800"
+content_type = "image/jpeg"
+
+[[outputs]]
+id = "6aGXv5sG-C9hncLvLWVPL"
+uri = "file://design-previews/atlas-layout.jpg"
+type = "image"
+title = "4 — Atlas Layout"
+description = "An asymmetric editorial layout with numbered services and a split portfolio showcase."
+logical_id = "1e817fa3-0259-464e-b406-316c34ad97ba"
+content_hash = "sha256:8fbdc68e04bc9470d5aeefe1424e073a2815517f2158552becde5a9e541db2bd"
+size = 51990
+mtime_ms = 1790956149958
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:4a69a1ad-6b3a-46a5-90ed-965103a0c010/1e817fa3-0259-464e-b406-316c34ad97ba/adf8c485-45d6-4a72-8881-9703796c846a"
+storage_version_token = "1790956159977043"
+content_type = "image/jpeg"
