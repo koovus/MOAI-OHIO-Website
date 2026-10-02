@@ -1,0 +1,1 @@
+- [Brand direction](brand-direction.md) — Moai imagery is an intended brand theme; brighter Hawaiian-inspired design is welcome.
